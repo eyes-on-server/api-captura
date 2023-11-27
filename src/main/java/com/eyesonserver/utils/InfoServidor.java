@@ -43,4 +43,17 @@ public class InfoServidor {
         }
         return ipv6;
     }
+
+    public static String getMacAddressServidor() {
+        String macAddress = "00:00:00:00:00:00";
+
+        List<RedeInterface> interfacesRede = looca.getRede().getGrupoDeInterfaces().getInterfaces();
+
+        for (RedeInterface redeInterface : interfacesRede) {
+            if(redeInterface.getNome().startsWith("e")) {
+                macAddress = redeInterface.getEnderecoMac();
+            }
+        }
+        return macAddress;
+    }
 }

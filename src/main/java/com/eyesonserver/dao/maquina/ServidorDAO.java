@@ -41,7 +41,7 @@ public class ServidorDAO {
                 InfoServidor.getNomeServidor (),
                 local,
                 InfoServidor.getIpv6Servidor(),
-                looca.getRede ().getGrupoDeInterfaces ().getInterfaces ().get (0).getEnderecoMac (),
+                InfoServidor.getMacAddressServidor(),
                 looca.getSistema ().getSistemaOperacional (),
                 descricao
         );
