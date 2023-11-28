@@ -4,17 +4,11 @@ import com.eyesonserver.database.Conexao;
 import com.eyesonserver.mapper.maquina.ServidorRowMapper;
 import com.eyesonserver.model.maquina.Servidor;
 import com.eyesonserver.utils.InfoServidor;
-import com.github.britooo.looca.api.core.Looca;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ServidorDAO {
-    private Conexao conexao = new Conexao();
-
-
-    private JdbcTemplate db = conexao.getConexaoDoBanco();
-    private Looca looca = new Looca ();
+    private final JdbcTemplate db = new Conexao().getConexaoDoBanco();
 
     public Servidor getServidorPorMacAddress(String macAddress) {
 
@@ -27,11 +21,6 @@ public class ServidorDAO {
 
     }
 
-    public Integer getIdComponenteServidorPorIdServidor(Integer idServidor) {
-
-        return db.queryForObject("SELECT id_componente_servidor FROM Componente_Servidor WHERE fk_servidor = ?", new BeanPropertyRowMapper<Integer>(Integer.class), idServidor);
-    }
-
     public void insertServidor(Integer fkEmpresa, String local) {
         String descricao = "Esse servidor foi registrado automaticamente.";
 
@@ -42,7 +31,7 @@ public class ServidorDAO {
                 local,
                 InfoServidor.getIpv6Servidor(),
                 InfoServidor.getMacAddressServidor(),
-                looca.getSistema ().getSistemaOperacional (),
+                InfoServidor.getSoServidor(),
                 descricao
         );
     }

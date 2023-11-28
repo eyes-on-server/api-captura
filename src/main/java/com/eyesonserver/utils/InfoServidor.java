@@ -21,7 +21,7 @@ public class InfoServidor {
 
             String line = "";
             while ((line = reader.readLine())!= null) {
-                output.append(line + "\n");
+                output.append(line).append("\n");
             }
 
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class InfoServidor {
         List<RedeInterface> interfacesRede = looca.getRede().getGrupoDeInterfaces().getInterfaces();
 
         for (RedeInterface redeInterface : interfacesRede) {
-            if(redeInterface.getNome().startsWith("e")) {
+            if(redeInterface.getNome().startsWith("e") || redeInterface.getNome().startsWith("E")) {
                 ipv6 = redeInterface.getEnderecoIpv6().get(0);
             }
         }
@@ -50,10 +50,14 @@ public class InfoServidor {
         List<RedeInterface> interfacesRede = looca.getRede().getGrupoDeInterfaces().getInterfaces();
 
         for (RedeInterface redeInterface : interfacesRede) {
-            if(redeInterface.getNome().startsWith("e")) {
+            if(redeInterface.getNome().startsWith("e") || redeInterface.getNome().startsWith("E")) {
                 macAddress = redeInterface.getEnderecoMac();
             }
         }
         return macAddress;
+    }
+
+    public static String getSoServidor() {
+        return looca.getSistema().getSistemaOperacional();
     }
 }

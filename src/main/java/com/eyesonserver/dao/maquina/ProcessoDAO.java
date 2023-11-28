@@ -7,8 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 public class ProcessoDAO {
-    private Conexao conexao = new Conexao();
-    private JdbcTemplate db = conexao.getConexaoDoBanco();
+    private final JdbcTemplate db = new Conexao().getConexaoDoBanco();
     
     public void insertProcessos(List<Processo> processos, Integer fkServidor) {
 

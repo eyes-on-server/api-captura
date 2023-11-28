@@ -7,8 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 public class RegistroDAO {
-    private Conexao conexao = new Conexao();
-    private JdbcTemplate db = conexao.getConexaoDoBanco();
+    private final JdbcTemplate db = new Conexao().getConexaoDoBanco();
 
     public void insertRegistro(Registro registro) {
         db.update("INSERT INTO Registro VALUES (?, ?, ?, ?)",

@@ -1,48 +1,40 @@
 package com.eyesonserver.model.negocio;
 
 public class Usuario {
-    private Integer id;
-    private Integer fkEmpresa;
-    private String nome;
-    private String email;
+    private String nomeUsuario;
+    private Integer idEmpresa;
+    private String login;
     private String senha;
-    private Integer cargo;
 
-    public Usuario(Integer id, Integer fkEmpresa, String nome, String email, String senha, Integer cargo) {
-        this.id = id;
-        this.fkEmpresa = fkEmpresa;
-        this.nome = nome;
-        this.email = email;
+    public Usuario(String nomeUsuario, Integer idEmpresa, String login, String senha) {
+        this.nomeUsuario = nomeUsuario;
+        this.idEmpresa = idEmpresa;
+        this.login = login;
         this.senha = senha;
-        this.cargo = cargo;
     }
 
-    public Integer getCargo() {
-        return cargo;
+    public String getNomeUsuario() {
+        return nomeUsuario;
     }
 
-    public void setCargo(Integer cargo) {
-        this.cargo = cargo;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 
-    public String getNome() {
-        return nome;
+    public Integer getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public Integer getId() {
-        return id;
+    public String getLogin() {
+        return login;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getSenha() {
@@ -51,9 +43,5 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public Integer getFkEmpresa () {
-        return fkEmpresa;
     }
 }

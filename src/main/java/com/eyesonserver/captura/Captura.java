@@ -44,6 +44,7 @@ public class Captura implements Runnable {
                                 System.out.println(
                                         "Essa thread foi interrompida; falha ao completar operação.");
                         }
+
                         Looca looca = new Looca();
                         RegistroDAO registroDAO = new RegistroDAO();
                         ProcessoDAO processoDAO = new ProcessoDAO();
