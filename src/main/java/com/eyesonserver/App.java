@@ -14,7 +14,6 @@ public class App {
         Thread thread2 = new Thread(new AgendamentoProcessos(3000));
 
         thread1.start();
-        System.out.println("Iniciando monitoramento do servidor: ");
         thread2.start();
 
     }

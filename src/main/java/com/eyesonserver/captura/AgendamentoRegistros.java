@@ -9,20 +9,20 @@ import java.util.TimerTask;
 public class AgendamentoRegistros implements Runnable{
 
     private final int sleepTime;
-
+    private final ObterComponentes obterComponentes = new ObterComponentes();
+    private int ticks = 0;
     public AgendamentoRegistros(int sleepTime) {
         this.sleepTime = sleepTime;
     }
 
     @Override
     public void run() {
-        List<ComponentesMonitorados> executaveis = new ObterComponentes().obterExecutaveis();
         Captura captura = new Captura();
 
         TimerTask tarefaRegistros = new TimerTask() {
             @Override
             public void run() {
-                captura.capturarRegistros(executaveis);
+                captura.capturarRegistros(obterComponentes.obterExecutaveis());
             }
         };
 

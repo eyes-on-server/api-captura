@@ -24,48 +24,52 @@ public class ObterComponentes {
     private static final ComponenteServidorDAO componenteServidorDAO = new ComponenteServidorDAO();
     private static final ComponenteMedidaDAO componenteMedidaDAO = new ComponenteMedidaDAO();
 
-    public Usuario obterLogin(){
+    private Usuario login = null;
 
-        String email;
-        String senha;
-        Usuario login = null;
-        List<Usuario> loginsEncontrados;
+    public void obterLogin(){
+        if(this.login == null){
+            String email;
+            String senha;
+            Usuario login = null;
+            List<Usuario> loginsEncontrados;
 
-        System.out.print("""                                
-                    ______                   ____           _____                         \s
-                   / ____/_  _____  _____   / __ \\____     / ___/___  ______   _____  _____
-                  / __/ / / / / _ \\/ ___/  / / / / __ \\    \\__ \\/ _ \\/ ___/ | / / _ \\/ ___/
-                 / /___/ /_/ /  __(__  )  / /_/ / / / /   ___/ /  __/ /   | |/ /  __/ /   \s
-                /_____/\\__, /\\___/____/   \\____/_/ /_/   /____/\\___/_/    |___/\\___/_/    \s
-                      /____/                                                                           
-                                
-                Seja muito bem-vindo(a) a API Java da Eyes On Server!
-                """);
+            System.out.print("""                                
+                        ______                   ____           _____                         \s
+                       / ____/_  _____  _____   / __ \\____     / ___/___  ______   _____  _____
+                      / __/ / / / / _ \\/ ___/  / / / / __ \\    \\__ \\/ _ \\/ ___/ | / / _ \\/ ___/
+                     / /___/ /_/ /  __(__  )  / /_/ / / / /   ___/ /  __/ /   | |/ /  __/ /   \s
+                    /_____/\\__, /\\___/____/   \\____/_/ /_/   /____/\\___/_/    |___/\\___/_/    \s
+                          /____/                                                                           
+                                    
+                    Seja muito bem-vindo(a) a API Java da Eyes On Server!
+                    """);
 
-        do {
-            System.out.print("Login: ");
-            email = leitor.nextLine();
+            do {
+                System.out.print("Login: ");
+                email = leitor.nextLine();
 
-            System.out.print("Senha: ");
-            senha = leitor.nextLine();
+                System.out.print("Senha: ");
+                senha = leitor.nextLine();
 
-            loginsEncontrados = usuarioDAO.getUsuarioPorEmailSenha(email, senha);
+                loginsEncontrados = usuarioDAO.getUsuarioPorEmailSenha(email, senha);
 
-            if (loginsEncontrados.isEmpty()) {
-                System.out.println("Usuário não encontrado!\n");
-            } else {
-                login = loginsEncontrados.get(0);
-            }
-        } while (login == null);
+                if (loginsEncontrados.isEmpty()) {
+                    System.out.println("Usuário não encontrado!\n");
+                } else {
+                    login = loginsEncontrados.get(0);
+                }
+            } while (login == null);
 
-        System.out.printf("\n\n\nOlá %s |", login.getNomeUsuario());
+            System.out.printf("\n\n\nOlá %s |", login.getNomeUsuario());
 
-        return login;
+            this.login = login;
+        }
+
     }
 
     public List<ComponentesMonitorados> obterExecutaveis(){
 
-        Usuario login = obterLogin();
+        obterLogin();
 
         String macAddress = InfoServidor.getMacAddressServidor();
         List<ComponentesMonitorados> executaveis = new ArrayList<>();
@@ -84,7 +88,7 @@ public class ObterComponentes {
                 System.out.print ("Insira o local do servidor: ");
                 String local = leitor.nextLine ();
 
-                servidorDAO.insertServidor(login.getIdEmpresa(), local);
+                servidorDAO.insertServidor(this.login.getIdEmpresa(), local);
                 Integer idServidor = servidorDAO.getServidorPorMacAddress(macAddress).getId();
 
                 List<ComponentesMonitorados> componentesSelecionados = new ArrayList<>();
