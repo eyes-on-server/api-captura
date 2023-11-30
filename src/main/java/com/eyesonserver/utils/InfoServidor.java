@@ -37,8 +37,11 @@ public class InfoServidor {
         List<RedeInterface> interfacesRede = looca.getRede().getGrupoDeInterfaces().getInterfaces();
 
         for (RedeInterface redeInterface : interfacesRede) {
-            if(redeInterface.getNome().startsWith("e") || redeInterface.getNome().startsWith("E")) {
-                ipv6 = redeInterface.getEnderecoIpv6().get(0);
+            if(redeInterface.getNome().startsWith("e")) {
+                if (!redeInterface.getEnderecoIpv6().isEmpty()){
+                    ipv6 = redeInterface.getEnderecoIpv6().get(0);
+                    break;
+                }
             }
         }
         return ipv6;
@@ -50,8 +53,9 @@ public class InfoServidor {
         List<RedeInterface> interfacesRede = looca.getRede().getGrupoDeInterfaces().getInterfaces();
 
         for (RedeInterface redeInterface : interfacesRede) {
-            if(redeInterface.getNome().startsWith("e") || redeInterface.getNome().startsWith("E")) {
+            if(redeInterface.getNome().startsWith("e")) {
                 macAddress = redeInterface.getEnderecoMac();
+                break;
             }
         }
         return macAddress;

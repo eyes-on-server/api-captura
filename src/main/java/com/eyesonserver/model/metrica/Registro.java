@@ -1,17 +1,14 @@
 package com.eyesonserver.model.metrica;
 
-import java.time.LocalDateTime;
 
 public class Registro {
     private Integer id;
     private Integer fkComponenteServidor;
-    private String valor;
-    private LocalDateTime momento;
+    private Object valor;
 
-    public Registro(Integer fkComponenteServidor, String valor, LocalDateTime momento) {
+    public Registro(Integer fkComponenteServidor, Object valor) {
         this.fkComponenteServidor = fkComponenteServidor;
         this.valor = valor;
-        this.momento = momento;
     }
 
     public Integer getId() {
@@ -32,19 +29,12 @@ public class Registro {
         this.fkComponenteServidor = fkComponenteServidor;
     }
 
-    public String getValor() {
+    public Object getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Object valor) {
         this.valor = valor;
     }
 
-    public LocalDateTime getMomento() {
-        return momento;
-    }
-
-    public void setMomento(LocalDateTime momento) {
-        this.momento = momento;
-    }
 }

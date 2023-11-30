@@ -9,11 +9,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Conexao {
     //classe responsavel pela conexao com o bd
 
-    private JdbcTemplate conexaoDoBanco;
-    private Dotenv dotenv;
+    private final JdbcTemplate conexaoDoBanco;
 
     public Conexao() {
-        dotenv = Dotenv.load();
+        Dotenv dotenv = Dotenv.load();
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(dotenv.get("DRIVER_DB"));
         dataSource.setUrl(dotenv.get("URL_DB"));

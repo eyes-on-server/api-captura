@@ -1,4 +1,4 @@
-package com.eyesonserver.captura;
+/*package com.eyesonserver.captura;
 
 import com.eyesonserver.dao.maquina.ProcessoDAO;
 import com.eyesonserver.dao.metrica.RegistroDAO;
@@ -115,3 +115,4 @@ public class Captura implements Runnable {
                 }
         }
 }
+*/

@@ -4,7 +4,7 @@ import com.github.britooo.looca.api.group.rede.RedeInterface;
 
 public class RedeBytesRecebidos extends Rede{
     @Override
-    public void executar() {
+    public Long executar() {
         Long receivedBytes = 0L;
 
         for(RedeInterface i : lucas.getGrupoDeInterfaces().getInterfaces()) {
@@ -13,5 +13,7 @@ public class RedeBytesRecebidos extends Rede{
                 break;
             }
         }
+
+        return receivedBytes;
     }
 }
