@@ -5,13 +5,13 @@ import com.github.britooo.looca.api.group.discos.Volume;
 public class DiscoUso extends Disco{
     @Override
     public Double executar() {
-        Long totalDisco = super.lucas.getTamanhoTotal();
-        Long discoDisponivel = 0L;
+        Double totalDisco = (double) super.lucas.getTamanhoTotal();
+        Double discoDisponivel = 0.0;
 
         for(Volume v : super.lucas.getVolumes()) {
-            discoDisponivel += v.getDisponivel();
+            discoDisponivel += (double) v.getDisponivel();
         }
 
-       return (double) (discoDisponivel / totalDisco * 100);
+       return (double) Math.round(100 - (discoDisponivel / totalDisco * 100));
     }
 }
