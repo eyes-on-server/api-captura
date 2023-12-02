@@ -11,6 +11,7 @@ public class ServidorRowMapper implements RowMapper<Servidor> {
     public Servidor mapRow(ResultSet rs, int i) throws SQLException {
         return new Servidor(
                 rs.getInt("id_servidor"),
+                rs.getInt("fk_empresa"),
                 rs.getString("nome_servidor"),
                 rs.getString("local_servidor"),
                 rs.getString("ipv6_servidor"),

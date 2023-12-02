@@ -120,7 +120,7 @@ public class ObterComponentes {
                 } while ((resposta > i || resposta < 0) || resposta != i);
 
                 componentesSelecionados.forEach(item -> {
-                    componenteServidorDAO.inserirComponenteServidor(idServidor, componenteMedidaDAO.coletarId(item.name()).getIdComponenteMedida());
+                    componenteServidorDAO.inserirComponenteServidor(idServidor, componenteMedidaDAO.coletarCompMedidaPorTipo(item.name()).getIdComponenteMedida());
                 });
 
             }

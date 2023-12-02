@@ -7,14 +7,16 @@ import java.util.List;
 
 public class Servidor {
     private Integer id;
+    private Integer fkEmpresa;
     private String nome;
     private String local;
     private String ipv6;
     private String so;
     private String macAdress;
 
-    public Servidor(Integer id, String nome, String local, String ipv6, String so, String macAdress) {
+    public Servidor(Integer id, Integer fkEmpresa, String nome, String local, String ipv6, String so, String macAdress) {
         this.id = id;
+        this.fkEmpresa = fkEmpresa;
         this.nome = nome;
         this.local = local;
         this.ipv6 = ipv6;
@@ -24,6 +26,14 @@ public class Servidor {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getFkEmpresa() {
+        return fkEmpresa;
+    }
+
+    public void setFkEmpresa(Integer fkEmpresa) {
+        this.fkEmpresa = fkEmpresa;
     }
 
     public String getMacAdress() {

@@ -5,7 +5,6 @@ import com.eyesonserver.model.metrica.Registro;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class RegistroDAO {
     private final JdbcTemplate db = new Conexao().getConexaoDoBanco();

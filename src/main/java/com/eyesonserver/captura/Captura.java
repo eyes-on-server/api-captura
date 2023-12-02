@@ -6,6 +6,7 @@ import com.eyesonserver.dao.metrica.RegistroDAO;
 import com.eyesonserver.enumeradores.ComponentesMonitorados;
 import com.eyesonserver.model.maquina.Processo;
 import com.eyesonserver.model.metrica.Registro;
+import com.eyesonserver.utils.FuncoesIndividuais;
 import com.eyesonserver.utils.InfoServidor;
 import com.github.britooo.looca.api.core.Looca;
 
@@ -20,6 +21,7 @@ public class Captura {
             ComponenteServidorDAO componenteServidorDAO = new ComponenteServidorDAO();
             RegistroDAO registroDAO = new RegistroDAO();
             LocalDateTime momento = LocalDateTime.now();
+            FuncoesIndividuais funcoesIndividuais = new FuncoesIndividuais();
 
             executaveis.forEach(item -> {
                 Integer idComponenteServidor = componenteServidorDAO.coletarIdComponenteServidorPorMacaddressTipo(InfoServidor.getMacAddressServidor(), item.name()).getIdComponenteServidor();
@@ -30,6 +32,8 @@ public class Captura {
                 ), momento);
 
                 System.out.printf("%s: %s%n", item.getNome(), valorRegistro);
+
+                funcoesIndividuais.verificarMetricas(item, valorRegistro, momento);
 
             });
         }

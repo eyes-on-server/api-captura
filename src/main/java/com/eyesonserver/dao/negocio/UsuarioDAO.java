@@ -3,7 +3,6 @@ package com.eyesonserver.dao.negocio;
 import com.eyesonserver.database.Conexao;
 import com.eyesonserver.mapper.negocio.UsuarioRowMapper;
 import com.eyesonserver.model.negocio.Usuario;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;

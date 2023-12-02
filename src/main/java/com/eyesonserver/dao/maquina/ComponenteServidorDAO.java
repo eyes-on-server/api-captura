@@ -3,7 +3,6 @@ package com.eyesonserver.dao.maquina;
 import com.eyesonserver.database.Conexao;
 import com.eyesonserver.mapper.maquina.ComponenteServidorRowMapper;
 import com.eyesonserver.model.maquina.ComponenteServidor;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;

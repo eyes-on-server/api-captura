@@ -13,6 +13,9 @@ public class ComponenteMedidaRowMapper implements RowMapper<ComponenteMedida> {
                 rs.getInt("id_componente_medida"),
                 rs.getString("nome_componente_medida"),
                 rs.getString("tipo"),
+                rs.getInt("valor_alerta_emergencia"),
+                rs.getInt("valor_alerta_perigo"),
+                rs.getInt("valor_alerta_prevencao"),
                 rs.getInt("fk_componente"),
                 rs.getInt("fk_medida")
         );
