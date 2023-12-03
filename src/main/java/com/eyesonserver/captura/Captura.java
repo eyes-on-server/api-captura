@@ -36,6 +36,9 @@ public class Captura {
                 funcoesIndividuais.verificarMetricas(item, valorRegistro, momento);
 
             });
+
+            funcoesIndividuais.calcularConsumoGeralServidor();
+            funcoesIndividuais.verificarDowntime();
         }
 
         public void capturarProcessos() {
